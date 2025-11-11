@@ -74,8 +74,24 @@ Core syntax keywords are defined in the `T` object (lines 101-130):
 - Booleans: `TOTALLY RIGHT` (true), `COMPLETELY WRONG` (false)
 - Operators: `IS ACTUALLY` (==), `PLUS`, `MINUS`, `TIMES`, `DIVIDED BY`, `MODULO`, `BEATS` (>), `SMALLER THAN` (<), `AND`, `OR`
 - Program end: `PLEASE LIKE AND SUBSCRIBE`
+- Comments: `SOURCES SAY` ... `THAT'S THE RUMOR` (block)
+
+## Comments
+
+Tabloid supports block comments - everything between `SOURCES SAY` and `THAT'S THE RUMOR` is ignored:
+
+```tabloid
+SOURCES SAY
+    This entire section is ignored
+    Can span multiple lines
+    Indent for readability
+THAT'S THE RUMOR
+```
+
+Comment keywords in string literals are treated as normal text and don't trigger comment behavior.
 
 ## Notes
 
 - No error locations reported on parse/runtime errors
 - Newlines are not significant - entire programs can be single-line
+- Unclosed block comments will throw a syntax error

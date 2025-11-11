@@ -76,14 +76,98 @@ class Wordifier {
             default: {
                 // read until WS
                 this.reader.backstep()
-                this.tokens.push(this.reader.readUntil(c => {
+                const word = this.reader.readUntil(c => {
                     return !c.trim() || ['(', ')', ','].includes(c)
-                }))
+                })
+
+                // Check for block comment start
+                if (word === 'SOURCES') {
+                    if (this.trySkipBlockComment()) {
+                        break
+                    }
+                }
+
+                this.tokens.push(word)
             }
             }
             this.reader.dropWhitespace()
         }
         return this.tokens
+    }
+    trySkipBlockComment() {
+        // Look ahead to see if this is "SOURCES SAY"
+        const savedPos = this.reader.i
+        this.reader.dropWhitespace()
+
+        if (!this.reader.hasNext()) {
+            // Just the word SOURCES at EOF, not a comment
+            this.reader.i = savedPos
+            return false
+        }
+
+        const nextWord = this.reader.readUntil(c => {
+            return !c.trim() || ['(', ')', ','].includes(c)
+        })
+
+        if (nextWord !== 'SAY') {
+            // Not "SOURCES SAY", restore position
+            this.reader.i = savedPos
+            return false
+        }
+
+        // Found "SOURCES SAY" - skip until "THAT'S THE RUMOR"
+        while (this.reader.hasNext()) {
+            this.reader.dropWhitespace()
+
+            if (!this.reader.hasNext()) {
+                throw new Error('Parsing error: Unclosed block comment - SOURCES SAY without matching THAT\'S THE RUMOR')
+            }
+
+            const commentWord = this.reader.readUntil(c => {
+                return !c.trim() || ['(', ')', ','].includes(c)
+            })
+
+            // If we got an empty word, we're stuck - advance by one character
+            if (commentWord === '') {
+                if (this.reader.hasNext()) {
+                    this.reader.next()
+                }
+                continue
+            }
+
+            // Check for "THAT'S THE RUMOR"
+            if (commentWord === 'THAT\'S') {
+                this.reader.dropWhitespace()
+
+                if (!this.reader.hasNext()) {
+                    throw new Error('Parsing error: Unclosed block comment - SOURCES SAY without matching THAT\'S THE RUMOR')
+                }
+
+                const word2 = this.reader.readUntil(c => {
+                    return !c.trim() || ['(', ')', ','].includes(c)
+                })
+
+                if (word2 === 'THE') {
+                    this.reader.dropWhitespace()
+
+                    if (!this.reader.hasNext()) {
+                        throw new Error('Parsing error: Unclosed block comment - SOURCES SAY without matching THAT\'S THE RUMOR')
+                    }
+
+                    const word3 = this.reader.readUntil(c => {
+                        return !c.trim() || ['(', ')', ','].includes(c)
+                    })
+
+                    if (word3 === 'RUMOR') {
+                        // Found complete "THAT'S THE RUMOR" - end of block comment
+                        return true
+                    }
+                }
+                // Partial match failed, continue from after "THAT'S"
+            }
+        }
+
+        throw new Error('Parsing error: Unclosed block comment - SOURCES SAY without matching THAT\'S THE RUMOR')
     }
     wordifyString(endChar) {
         let acc = ''
