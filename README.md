@@ -1,7 +1,7 @@
 # The Tabloid Programming Language 💣
 
-[![Test](https://github.com/thesephist/tabloid/actions/workflows/test.yml/badge.svg)](https://github.com/thesephist/tabloid/actions/workflows/test.yml)
-[![Lint](https://github.com/thesephist/tabloid/actions/workflows/lint.yml/badge.svg)](https://github.com/thesephist/tabloid/actions/workflows/lint.yml)
+[![Test](https://github.com/Daghis/tabloid/actions/workflows/test.yml/badge.svg)](https://github.com/Daghis/tabloid/actions/workflows/test.yml)
+[![Lint](https://github.com/Daghis/tabloid/actions/workflows/lint.yml/badge.svg)](https://github.com/Daghis/tabloid/actions/workflows/lint.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 **Tabloid** is a minimal but Turing complete programming language inspired, nay, **supercharged** by clickbait headlines that rule the Internet today. You can try Tabloid [on the Tabloid website](https://daghis.github.io/tabloid/). Thanks to [@otherjoel](https://github.com/otherjoel), there's also a [Racket implementation](https://github.com/otherjoel/tabloid) of Tabloid that's very nearly compatible. A small library of math and other helper functions is also available from [@MarcelloTheArcane](https://github.com/MarcelloTheArcane)'s [tabloid-samples](https://github.com/MarcelloTheArcane/tabloid-samples) project.
