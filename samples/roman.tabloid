@@ -27,85 +27,92 @@ SOURCES SAY
     Roman → Integer conversion is not possible in Tabloid due to lack of string indexing.
 THAT'S THE RUMOR
 
-DISCOVER HOW TO convertToRoman WITH n
+DISCOVER HOW TO convertToRoman WITH n, original
     RUMOR HAS IT
         WHAT IF n BEATS 999999
-            SHOCKING DEVELOPMENT "M̅" PLUS convertToRoman OF (n MINUS 1000000)
+            SHOCKING DEVELOPMENT "M̅" PLUS convertToRoman OF (n MINUS 1000000), original
         LIES!
             WHAT IF n BEATS 899999
-                SHOCKING DEVELOPMENT "C̅M̅" PLUS convertToRoman OF (n MINUS 900000)
+                SHOCKING DEVELOPMENT "C̅M̅" PLUS convertToRoman OF (n MINUS 900000), original
             LIES!
                 WHAT IF n BEATS 499999
-                    SHOCKING DEVELOPMENT "D̅" PLUS convertToRoman OF (n MINUS 500000)
+                    SHOCKING DEVELOPMENT "D̅" PLUS convertToRoman OF (n MINUS 500000), original
                 LIES!
                     WHAT IF n BEATS 399999
-                        SHOCKING DEVELOPMENT "C̅D̅" PLUS convertToRoman OF (n MINUS 400000)
+                        SHOCKING DEVELOPMENT "C̅D̅" PLUS convertToRoman OF (n MINUS 400000), original
                     LIES!
                         WHAT IF n BEATS 99999
-                            SHOCKING DEVELOPMENT "C̅" PLUS convertToRoman OF (n MINUS 100000)
+                            SHOCKING DEVELOPMENT "C̅" PLUS convertToRoman OF (n MINUS 100000), original
                         LIES!
                             WHAT IF n BEATS 89999
-                                SHOCKING DEVELOPMENT "X̅C̅" PLUS convertToRoman OF (n MINUS 90000)
+                                SHOCKING DEVELOPMENT "X̅C̅" PLUS convertToRoman OF (n MINUS 90000), original
                             LIES!
                                 WHAT IF n BEATS 49999
-                                    SHOCKING DEVELOPMENT "L̅" PLUS convertToRoman OF (n MINUS 50000)
+                                    SHOCKING DEVELOPMENT "L̅" PLUS convertToRoman OF (n MINUS 50000), original
                                 LIES!
                                     WHAT IF n BEATS 39999
-                                        SHOCKING DEVELOPMENT "X̅L̅" PLUS convertToRoman OF (n MINUS 40000)
+                                        SHOCKING DEVELOPMENT "X̅L̅" PLUS convertToRoman OF (n MINUS 40000), original
                                     LIES!
                                         WHAT IF n BEATS 9999
-                                            SHOCKING DEVELOPMENT "X̅" PLUS convertToRoman OF (n MINUS 10000)
+                                            SHOCKING DEVELOPMENT "X̅" PLUS convertToRoman OF (n MINUS 10000), original
                                         LIES!
                                             WHAT IF n BEATS 8999
-                                                SHOCKING DEVELOPMENT "I̅X̅" PLUS convertToRoman OF (n MINUS 9000)
+                                                SHOCKING DEVELOPMENT "I̅X̅" PLUS convertToRoman OF (n MINUS 9000), original
                                             LIES!
                                                 WHAT IF n BEATS 4999
-                                                    SHOCKING DEVELOPMENT "V̅" PLUS convertToRoman OF (n MINUS 5000)
+                                                    SHOCKING DEVELOPMENT "V̅" PLUS convertToRoman OF (n MINUS 5000), original
                                                 LIES!
                                                     WHAT IF n BEATS 3999
-                                                        SHOCKING DEVELOPMENT "I̅V̅" PLUS convertToRoman OF (n MINUS 4000)
+                                                        SHOCKING DEVELOPMENT "I̅V̅" PLUS convertToRoman OF (n MINUS 4000), original
                                                     LIES!
                                                         WHAT IF n BEATS 999
-                                                            SHOCKING DEVELOPMENT "M" PLUS convertToRoman OF (n MINUS 1000)
-        LIES!
-            WHAT IF n BEATS 899
-                SHOCKING DEVELOPMENT "CM" PLUS convertToRoman OF (n MINUS 900)
-            LIES!
-                WHAT IF n BEATS 499
-                    SHOCKING DEVELOPMENT "D" PLUS convertToRoman OF (n MINUS 500)
-                LIES!
-                    WHAT IF n BEATS 399
-                        SHOCKING DEVELOPMENT "CD" PLUS convertToRoman OF (n MINUS 400)
-                    LIES!
-                        WHAT IF n BEATS 99
-                            SHOCKING DEVELOPMENT "C" PLUS convertToRoman OF (n MINUS 100)
-                        LIES!
-                            WHAT IF n BEATS 89
-                                SHOCKING DEVELOPMENT "XC" PLUS convertToRoman OF (n MINUS 90)
-                            LIES!
-                                WHAT IF n BEATS 49
-                                    SHOCKING DEVELOPMENT "L" PLUS convertToRoman OF (n MINUS 50)
-                                LIES!
-                                    WHAT IF n BEATS 39
-                                        SHOCKING DEVELOPMENT "XL" PLUS convertToRoman OF (n MINUS 40)
-                                    LIES!
-                                        WHAT IF n BEATS 9
-                                            SHOCKING DEVELOPMENT "X" PLUS convertToRoman OF (n MINUS 10)
-                                        LIES!
-                                            WHAT IF n BEATS 8
-                                                SHOCKING DEVELOPMENT "IX" PLUS convertToRoman OF (n MINUS 9)
-                                            LIES!
-                                                WHAT IF n BEATS 4
-                                                    SHOCKING DEVELOPMENT "V" PLUS convertToRoman OF (n MINUS 5)
-                                                LIES!
-                                                    WHAT IF n BEATS 3
-                                                        SHOCKING DEVELOPMENT "IV" PLUS convertToRoman OF (n MINUS 4)
-                                                    LIES!
-                                                        WHAT IF n BEATS 0
-                                                            SHOCKING DEVELOPMENT "I" PLUS convertToRoman OF (n MINUS 1)
+                                                            RUMOR HAS IT
+                                                                WHAT IF original BEATS 4999
+                                                                    SOURCES SAY Use I̅ for 1000 when original > 4999 THAT'S THE RUMOR
+                                                                    SHOCKING DEVELOPMENT "I̅" PLUS convertToRoman OF (n MINUS 1000), original
+                                                                LIES!
+                                                                    SOURCES SAY Use M for 1000 when original <= 4999 THAT'S THE RUMOR
+                                                                    SHOCKING DEVELOPMENT "M" PLUS convertToRoman OF (n MINUS 1000), original
+                                                            END OF STORY
                                                         LIES!
-                                                            SOURCES SAY Base case: number is 0 THAT'S THE RUMOR
-                                                            SHOCKING DEVELOPMENT ""
+                                                            WHAT IF n BEATS 899
+                                                                    SHOCKING DEVELOPMENT "CM" PLUS convertToRoman OF (n MINUS 900), original
+                                                                LIES!
+                                                                    WHAT IF n BEATS 499
+                                                                        SHOCKING DEVELOPMENT "D" PLUS convertToRoman OF (n MINUS 500), original
+                                                                    LIES!
+                                                                        WHAT IF n BEATS 399
+                                                                            SHOCKING DEVELOPMENT "CD" PLUS convertToRoman OF (n MINUS 400), original
+                                                                        LIES!
+                                                                            WHAT IF n BEATS 99
+                                                                                SHOCKING DEVELOPMENT "C" PLUS convertToRoman OF (n MINUS 100), original
+                                                                        LIES!
+                                                                            WHAT IF n BEATS 89
+                                                                                SHOCKING DEVELOPMENT "XC" PLUS convertToRoman OF (n MINUS 90), original
+                                                                            LIES!
+                                                                                WHAT IF n BEATS 49
+                                                                                    SHOCKING DEVELOPMENT "L" PLUS convertToRoman OF (n MINUS 50), original
+                                                                                LIES!
+                                                                                    WHAT IF n BEATS 39
+                                                                                        SHOCKING DEVELOPMENT "XL" PLUS convertToRoman OF (n MINUS 40), original
+                                                                                    LIES!
+                                                                                        WHAT IF n BEATS 9
+                                                                                            SHOCKING DEVELOPMENT "X" PLUS convertToRoman OF (n MINUS 10), original
+                                                                                        LIES!
+                                                                                            WHAT IF n BEATS 8
+                                                                                                SHOCKING DEVELOPMENT "IX" PLUS convertToRoman OF (n MINUS 9), original
+                                                                                            LIES!
+                                                                                                WHAT IF n BEATS 4
+                                                                                                    SHOCKING DEVELOPMENT "V" PLUS convertToRoman OF (n MINUS 5), original
+                                                                                                LIES!
+                                                                                                    WHAT IF n BEATS 3
+                                                                                                        SHOCKING DEVELOPMENT "IV" PLUS convertToRoman OF (n MINUS 4), original
+                                                                                                    LIES!
+                                                                                                        WHAT IF n BEATS 0
+                                                                                                            SHOCKING DEVELOPMENT "I" PLUS convertToRoman OF (n MINUS 1), original
+                                                                                                        LIES!
+                                                                                                            SOURCES SAY Base case: number is 0 THAT'S THE RUMOR
+                                                                                                            SHOCKING DEVELOPMENT ""
     END OF STORY
 
 SOURCES SAY Main program THAT'S THE RUMOR
@@ -114,7 +121,7 @@ EXPERTS CLAIM number TO BE LATEST NEWS ON "Enter a number (1-3999999): "
 
 WHAT IF number BEATS 0
     RUMOR HAS IT
-        EXPERTS CLAIM result TO BE convertToRoman OF number
+        EXPERTS CLAIM result TO BE convertToRoman OF number, number
         YOU WON'T WANT TO MISS (number PLUS " in Roman numerals is ") PLUS result
     END OF STORY
 LIES!
