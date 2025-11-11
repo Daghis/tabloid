@@ -1,0 +1,39 @@
+{
+  "name": "tabloid",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "description": "A minimal but Turing complete programming language inspired by clickbait headlines",
+  "main": "tabloid-repl.js",
+  "bin": {
+    "tabloid": "./tabloid-repl.js"
+  },
+  "scripts": {
+    "test": "node test/runner.js",
+    "lint": "eslint static/js/*.js tabloid-repl.js test/**/*.js",
+    "lint:fix": "eslint --fix static/js/*.js tabloid-repl.js test/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thesephist/tabloid.git"
+  },
+  "keywords": [
+    "programming-language",
+    "interpreter",
+    "esoteric",
+    "clickbait",
+    "joke-language",
+    "turing-complete"
+  ],
+  "author": "Linus Lee <linus@thesephist.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thesephist/tabloid/issues"
+  },
+  "homepage": "https://github.com/thesephist/tabloid#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0"
+  }
+}
