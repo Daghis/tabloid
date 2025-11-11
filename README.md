@@ -4,7 +4,7 @@
 [![Lint](https://github.com/thesephist/tabloid/actions/workflows/lint.yml/badge.svg)](https://github.com/thesephist/tabloid/actions/workflows/lint.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-**Tabloid** is a minimal but Turing complete programming language inspired, nay, **supercharged** by clickbait headlines that rule the Internet today. You can try Tabloid [on the Tabloid website](https://tabloid.vercel.app). Thanks to [@otherjoel](https://github.com/otherjoel), there's also a [Racket implementation](https://github.com/otherjoel/tabloid) of Tabloid that's very nearly compatible. A small library of math and other helper functions is also available from [@MarcelloTheArcane](https://github.com/MarcelloTheArcane)'s [tabloid-samples](https://github.com/MarcelloTheArcane/tabloid-samples) project.
+**Tabloid** is a minimal but Turing complete programming language inspired, nay, **supercharged** by clickbait headlines that rule the Internet today. You can try Tabloid [on the Tabloid website](https://daghis.github.io/tabloid/). Thanks to [@otherjoel](https://github.com/otherjoel), there's also a [Racket implementation](https://github.com/otherjoel/tabloid) of Tabloid that's very nearly compatible. A small library of math and other helper functions is also available from [@MarcelloTheArcane](https://github.com/MarcelloTheArcane)'s [tabloid-samples](https://github.com/MarcelloTheArcane/tabloid-samples) project.
 
 ![Tabloid website screenshot](static/img/screenshot.jpg)
 
@@ -12,7 +12,7 @@ Tabloid is quite small -- it only supports number, string, and boolean values at
 
 ## Language overview
 
-You can find the complete list of special Tabloid keywords on [the Tabloid website](https://tabloid.thesephist.vercel.app).
+You can find the complete list of special Tabloid keywords on [the Tabloid website](https://daghis.github.io/tabloid/).
 
 Tabloid has an expression-based grammar, and lacks any distinction between expressions and statements. If there isn't an explicit return from a function, the last expression's value will be returned.
 
