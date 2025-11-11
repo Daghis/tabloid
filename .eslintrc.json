@@ -1,0 +1,43 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "module"
+  },
+  "ignorePatterns": ["static/js/torus.min.js"],
+  "rules": {
+    "indent": ["error", 4],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "single"],
+    "semi": ["error", "never"],
+    "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+    "no-console": "off"
+  },
+  "overrides": [
+    {
+      "files": ["static/js/*.js"],
+      "env": {
+        "browser": true,
+        "node": false
+      },
+      "globals": {
+        "tokenize": "readonly",
+        "Parser": "readonly",
+        "Environment": "readonly",
+        "jdom": "readonly"
+      }
+    },
+    {
+      "files": ["tabloid-repl.js", "test/**/*.js"],
+      "env": {
+        "browser": false,
+        "node": true
+      }
+    }
+  ]
+}
