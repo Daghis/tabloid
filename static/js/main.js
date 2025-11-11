@@ -156,13 +156,13 @@ class App extends Component {
                 <h1>${randomHeadline()}</h1>
                 <nav>
                     <a href="https://github.com/thesephist/tabloid"
-                        target="_blank" noopener noreferer>GitHub</a>
+                        target="_blank" rel="noopener noreferrer">GitHub</a>
                     <a href="#" onclick=${evt => {
         evt.preventDefault()
         this.render()
     }}>NEW headline!</a>
                     <a href="https://github.com/thesephist/tabloid/blob/master/README.md#language-overview"
-                        target="_blank" noopener noreferer>Tutorial</a>
+                        target="_blank" rel="noopener noreferrer">Tutorial</a>
                 </nav>
                 <p class="subtitle">
                     <strong class="lang fixed inline block">Tabloid:</strong> The Clickbait Headline Programming Language
@@ -217,7 +217,7 @@ class App extends Component {
             <h2>But why?</h2>
             <p>
                 Didn't want to do homework for my
-                <a href="https://cs186berkeley.net/" target="_blank">database
+                <a href="https://cs186berkeley.net/" target="_blank" rel="noopener noreferrer">database
                 systems class</a>, and needed something to do to procrastinate.
                 Will I finish the homework? Did I get enough sleep?
             </p>
@@ -235,16 +235,16 @@ class App extends Component {
             <p>
                 Besides this online interpreter, Tabloid now also has a mostly
                 compatible <a href="https://github.com/otherjoel/tabloid"
-                target="_blank">implementation in Racket</a> and a small <a
+                target="_blank" rel="noopener noreferrer">implementation in Racket</a> and a small <a
                 href="https://github.com/MarcelloTheArcane/tabloid-samples"
-                target="_blank">library of helper functions</a> ... for some
+                target="_blank" rel="noopener noreferrer">library of helper functions</a> ... for some
                 reason.
             </p>
             <p>
                 Before making Tabloid, I also created a more <strike>useful and
                 well-designed</strike>${' '}<strong>boring and unpopular</strong>
                 programming language, called <a href="https://dotink.co/"
-                target="_blank">Ink</a>.
+                target="_blank" rel="noopener noreferrer">Ink</a>.
             </p>
             <h2>How much is there?</h2>
             <p>Here's the full list of standard keywords that Tabloid currently uses:</p>
