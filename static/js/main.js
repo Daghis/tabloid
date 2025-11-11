@@ -13,7 +13,7 @@ EXPERTS CLAIM result TO BE factorial OF 10
 YOU WON'T WANT TO MISS 'Result is'
 YOU WON'T WANT TO MISS result
 
-PLEASE LIKE AND SUBSCRIBE`;
+PLEASE LIKE AND SUBSCRIBE`
 
 const PROG_FIBONACCI = `DISCOVER HOW TO fibonacci WITH a, b, n
 RUMOR HAS IT
@@ -30,87 +30,87 @@ EXPERTS CLAIM limit TO BE 10
 YOU WON'T WANT TO MISS 'First 10 Fibonacci numbers'
 EXPERTS CLAIM nothing TO BE fibonacci OF 0, 1, limit
 
-PLEASE LIKE AND SUBSCRIBE`;
+PLEASE LIKE AND SUBSCRIBE`
 
-const PROG_DEFAULT = PROG_FIBONACCI;
+const PROG_DEFAULT = PROG_FIBONACCI
 
 const HEADLINES = [
-    `You Won't Believe What This Programming Language Can Do!`,
-    `The Best Programming Language You Haven't Heard Of (It Will Surprise You!)`,
-    `Shocking New Programming Language Bewilders Programmers at Google and Facebook!`,
-    `Programmer Who Made Everything Now Predicts the Next Big Language!`,
-    `The Secret Programming Language Every 10x Programmer Recommends!`,
-    `Programmers at Microsoft Hate This One Trick to Get Good at that Code Thing!`,
-    `How To Lose Brain Fat With This Programming Language!`,
-    `Your Friends Will Be Jealous About This New Programming Language!`,
-    `You Can Earn Millions With This Programming Language!`,
-    `The Cure For Cancer Could Be Found With The Programming Language!`
-];
+    'You Won\'t Believe What This Programming Language Can Do!',
+    'The Best Programming Language You Haven\'t Heard Of (It Will Surprise You!)',
+    'Shocking New Programming Language Bewilders Programmers at Google and Facebook!',
+    'Programmer Who Made Everything Now Predicts the Next Big Language!',
+    'The Secret Programming Language Every 10x Programmer Recommends!',
+    'Programmers at Microsoft Hate This One Trick to Get Good at that Code Thing!',
+    'How To Lose Brain Fat With This Programming Language!',
+    'Your Friends Will Be Jealous About This New Programming Language!',
+    'You Can Earn Millions With This Programming Language!',
+    'The Cure For Cancer Could Be Found With The Programming Language!'
+]
 
 function randomHeadline() {
-    return HEADLINES[~~(Math.random() * HEADLINES.length)];
+    return HEADLINES[~~(Math.random() * HEADLINES.length)]
 }
 
 const {
     Component,
-} = window.Torus;
+} = window.Torus
 
 class Editor extends Component {
     init() {
-        this.prog = PROG_DEFAULT;
+        this.prog = PROG_DEFAULT
         // script appends to it
-        this.output = '';
-        this.errors = '';
+        this.output = ''
+        this.errors = ''
 
-        this.handleRun = () => this.eval();
+        this.handleRun = () => this.eval()
         this.handleInput = evt => {
-            this.prog = evt.target.value;
-            this.render();
+            this.prog = evt.target.value
+            this.render()
         }
         this.handleKeydown = evt => {
             if (evt.key === 'Tab') {
-                evt.preventDefault();
-                const idx = evt.target.selectionStart;
+                evt.preventDefault()
+                const idx = evt.target.selectionStart
                 if (idx !== null) {
-                    const front = this.prog.substr(0, idx);
-                    const back = this.prog.substr(idx);
-                    this.prog = front + '    ' + back;
-                    this.render();
-                    evt.target.setSelectionRange(idx + 4, idx + 4);
+                    const front = this.prog.substr(0, idx)
+                    const back = this.prog.substr(idx)
+                    this.prog = front + '    ' + back
+                    this.render()
+                    evt.target.setSelectionRange(idx + 4, idx + 4)
                 }
             }
         }
         this.setFactorial = () => {
-            this.prog = PROG_FACTORIAL;
-            this.output = this.errors = '';
-            this.render();
+            this.prog = PROG_FACTORIAL
+            this.output = this.errors = ''
+            this.render()
         }
         this.setFibonacci= () => {
-            this.prog = PROG_FIBONACCI;
-            this.output = this.errors = '';
-            this.render();
+            this.prog = PROG_FIBONACCI
+            this.output = this.errors = ''
+            this.render()
         }
     }
     eval() {
-        this.output = '';
-        this.errors = '';
+        this.output = ''
+        this.errors = ''
         try {
-            const tokens = tokenize(this.prog);
-            const nodes = new Parser(tokens).parse();
+            const tokens = tokenize(this.prog)
+            const nodes = new Parser(tokens).parse()
             const env = new Environment({
                 print: s => {
-                    this.output += s.toString().toUpperCase() + '!\n';
-                    this.render();
+                    this.output += s.toString().toUpperCase() + '!\n'
+                    this.render()
                 },
                 input: s => {
-                    return prompt(s);
+                    return prompt(s)
                 },
-            });
-            env.run(nodes);
+            })
+            env.run(nodes)
         } catch (e) {
-            this.errors = e.toString();
+            this.errors = e.toString()
         }
-        this.render();
+        this.render()
     }
     compose() {
         return jdom`<div class="editor fixed block">
@@ -125,7 +125,7 @@ class Editor extends Component {
             <div class="code">
                 <div class="filler">
                     ${this.prog.split('\n')
-                        .map(line => jdom`<p>${line.trim() ? line : '-'}</p>`)}
+        .map(line => jdom`<p>${line.trim() ? line : '-'}</p>`)}
                 </div>
                 <textarea class="editor-input" cols="30" rows="10"
                     value=${this.prog}
@@ -135,20 +135,20 @@ class Editor extends Component {
             </div>
             <div class="output">
                 ${this.output ? this.output
-                    .split('\n')
-                    .map(line => jdom`<code class="output-line">${line}</code>`)
-                    : jdom`<code class="no-output">No output.</code>`}
+        .split('\n')
+        .map(line => jdom`<code class="output-line">${line}</code>`)
+        : jdom`<code class="no-output">No output.</code>`}
             </div>
             ${this.errors ? jdom`<div class="errors">
                 ${this.errors.split('\n').map(line => jdom`<code>${line}</code>`)}
             </div>` : null}
-        </div>`;
+        </div>`
     }
 }
 
 class App extends Component {
     init() {
-        this.editor = new Editor();
+        this.editor = new Editor()
     }
     compose() {
         return jdom`<main>
@@ -158,9 +158,9 @@ class App extends Component {
                     <a href="https://github.com/thesephist/tabloid"
                         target="_blank" noopener noreferer>GitHub</a>
                     <a href="#" onclick=${evt => {
-                        evt.preventDefault();
-                        this.render();
-                    }}>NEW headline!</a>
+        evt.preventDefault()
+        this.render()
+    }}>NEW headline!</a>
                     <a href="https://github.com/thesephist/tabloid/blob/master/README.md#language-overview"
                         target="_blank" noopener noreferer>Tutorial</a>
                 </nav>
@@ -330,9 +330,9 @@ class App extends Component {
                     <a href="https://thesephist.github.io/blocks.css/">blocks.css</a>.
                 </p>
             </footer>
-        </main>`;
+        </main>`
     }
 }
 
-const app = new App();
-document.body.appendChild(app.node);
+const app = new App()
+document.body.appendChild(app.node)
