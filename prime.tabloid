@@ -1,0 +1,57 @@
+SOURCES SAY
+    Prime Number Checker
+
+    This program prompts the user for a number and determines
+    whether it is prime using a recursive algorithm.
+
+    Algorithm:
+    - Numbers less than 2 are not prime
+    - 2 is prime (only even prime)
+    - For other numbers, check if any number from n-1 down to 2 divides evenly
+THAT'S THE RUMOR
+
+YOU WON'T WANT TO MISS 'Prime Number Checker'
+YOU WON'T WANT TO MISS ''
+
+EXPERTS CLAIM num TO BE LATEST NEWS ON 'Enter a number:'
+
+SOURCES SAY
+    Recursive helper function to check divisors from high to low
+THAT'S THE RUMOR
+DISCOVER HOW TO checkDivisor WITH n, divisor
+RUMOR HAS IT
+    WHAT IF divisor SMALLER THAN 2
+        SHOCKING DEVELOPMENT TOTALLY RIGHT
+    LIES! RUMOR HAS IT
+        EXPERTS CLAIM remainder TO BE n MODULO divisor
+        WHAT IF remainder IS ACTUALLY 0
+            SHOCKING DEVELOPMENT COMPLETELY WRONG
+        LIES!
+            SHOCKING DEVELOPMENT checkDivisor OF n, divisor MINUS 1
+    END OF STORY
+END OF STORY
+
+SOURCES SAY
+    Main prime checking function
+THAT'S THE RUMOR
+DISCOVER HOW TO isPrime WITH n
+RUMOR HAS IT
+    WHAT IF n SMALLER THAN 2
+        SHOCKING DEVELOPMENT COMPLETELY WRONG
+    LIES! RUMOR HAS IT
+        WHAT IF n IS ACTUALLY 2
+            SHOCKING DEVELOPMENT TOTALLY RIGHT
+        LIES!
+            SHOCKING DEVELOPMENT checkDivisor OF n, n MINUS 1
+    END OF STORY
+END OF STORY
+
+EXPERTS CLAIM result TO BE isPrime OF num
+YOU WON'T WANT TO MISS ''
+
+WHAT IF result
+    YOU WON'T WANT TO MISS num PLUS ' is prime!'
+LIES!
+    YOU WON'T WANT TO MISS num PLUS ' is not prime.'
+
+PLEASE LIKE AND SUBSCRIBE

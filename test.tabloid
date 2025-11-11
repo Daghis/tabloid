@@ -1,6 +1,10 @@
 YOU WON'T WANT TO MISS '=== Tabloid Test Program ==='
 YOU WON'T WANT TO MISS ''
 
+SOURCES SAY
+    Test demonstrating various language features
+THAT'S THE RUMOR
+
 YOU WON'T WANT TO MISS 'Testing arithmetic:'
 EXPERTS CLAIM a TO BE 10
 EXPERTS CLAIM b TO BE 20
@@ -37,6 +41,11 @@ END OF STORY
 EXPERTS CLAIM result TO BE factorial OF 6
 YOU WON'T WANT TO MISS result
 YOU WON'T WANT TO MISS ''
+
+SOURCES SAY
+Multi-line comments work great!
+You can write documentation here.
+THAT'S THE RUMOR
 
 YOU WON'T WANT TO MISS 'All tests complete!'
 
