@@ -12,7 +12,7 @@ Tabloid is quite small -- it only supports number, string, and boolean values at
 
 ## Language overview
 
-You can find the complete list of special Tabloid keywords on [the Tabloid website](https://tabloid.thesephist.vercel.app).
+You can find the complete list of special Tabloid keywords on [the Tabloid website](https://daghis.github.io/tabloid/).
 
 Tabloid has an expression-based grammar, and lacks any distinction between expressions and statements. If there isn't an explicit return from a function, the last expression's value will be returned.
 
