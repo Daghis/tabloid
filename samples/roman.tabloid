@@ -1,0 +1,79 @@
+SOURCES SAY
+    Roman Numeral Converter
+
+    Converts integers (1-3999) to Roman numerals using recursive descent.
+
+    Algorithm: Check values from largest to smallest (M, CM, D, CD, C, XC, L, XL, X, IX, V, IV, I)
+    and recursively build the Roman numeral string.
+
+    Examples:
+        1 → I
+        4 → IV
+        9 → IX
+        42 → XLII
+        1994 → MCMXCIV
+        2024 → MMXXIV
+        3999 → MMMCMXCIX
+
+    Limitation: This converts Integer → Roman only.
+    Roman → Integer conversion is not possible in Tabloid due to lack of string indexing.
+THAT'S THE RUMOR
+
+DISCOVER HOW TO convertToRoman WITH n
+    RUMOR HAS IT
+        WHAT IF n BEATS 999
+            SHOCKING DEVELOPMENT "M" PLUS convertToRoman OF (n MINUS 1000)
+        LIES!
+            WHAT IF n BEATS 899
+                SHOCKING DEVELOPMENT "CM" PLUS convertToRoman OF (n MINUS 900)
+            LIES!
+                WHAT IF n BEATS 499
+                    SHOCKING DEVELOPMENT "D" PLUS convertToRoman OF (n MINUS 500)
+                LIES!
+                    WHAT IF n BEATS 399
+                        SHOCKING DEVELOPMENT "CD" PLUS convertToRoman OF (n MINUS 400)
+                    LIES!
+                        WHAT IF n BEATS 99
+                            SHOCKING DEVELOPMENT "C" PLUS convertToRoman OF (n MINUS 100)
+                        LIES!
+                            WHAT IF n BEATS 89
+                                SHOCKING DEVELOPMENT "XC" PLUS convertToRoman OF (n MINUS 90)
+                            LIES!
+                                WHAT IF n BEATS 49
+                                    SHOCKING DEVELOPMENT "L" PLUS convertToRoman OF (n MINUS 50)
+                                LIES!
+                                    WHAT IF n BEATS 39
+                                        SHOCKING DEVELOPMENT "XL" PLUS convertToRoman OF (n MINUS 40)
+                                    LIES!
+                                        WHAT IF n BEATS 9
+                                            SHOCKING DEVELOPMENT "X" PLUS convertToRoman OF (n MINUS 10)
+                                        LIES!
+                                            WHAT IF n BEATS 8
+                                                SHOCKING DEVELOPMENT "IX" PLUS convertToRoman OF (n MINUS 9)
+                                            LIES!
+                                                WHAT IF n BEATS 4
+                                                    SHOCKING DEVELOPMENT "V" PLUS convertToRoman OF (n MINUS 5)
+                                                LIES!
+                                                    WHAT IF n BEATS 3
+                                                        SHOCKING DEVELOPMENT "IV" PLUS convertToRoman OF (n MINUS 4)
+                                                    LIES!
+                                                        WHAT IF n BEATS 0
+                                                            SHOCKING DEVELOPMENT "I" PLUS convertToRoman OF (n MINUS 1)
+                                                        LIES!
+                                                            SOURCES SAY Base case: number is 0 THAT'S THE RUMOR
+                                                            SHOCKING DEVELOPMENT ""
+    END OF STORY
+
+SOURCES SAY Main program THAT'S THE RUMOR
+
+EXPERTS CLAIM number TO BE LATEST NEWS ON "Enter a number (1-3999): "
+
+WHAT IF number BEATS 0
+    RUMOR HAS IT
+        EXPERTS CLAIM result TO BE convertToRoman OF number
+        YOU WON'T WANT TO MISS (number PLUS " in Roman numerals is ") PLUS result
+    END OF STORY
+LIES!
+    YOU WON'T WANT TO MISS "Please enter a positive number!"
+
+PLEASE LIKE AND SUBSCRIBE
