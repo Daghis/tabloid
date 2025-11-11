@@ -63,6 +63,54 @@ A Node.js-based REPL is available:
 - `echo "input" | node tabloid-repl.js program.tabloid` - Pipe input to program
 - See README-REPL.md for usage details
 
+## Contribution Workflow
+
+**IMPORTANT: All changes to this repository MUST go through pull requests.**
+
+### Branch Protection
+
+The `master` branch is protected with the following rules:
+- **Pull requests required**: No direct commits to master are allowed
+- **Status checks required**: Both `test` and `lint` workflows must pass before merging
+- **Enforced for administrators**: Even repository administrators must use PRs
+- **No force pushes**: History on master cannot be rewritten
+- **No deletions**: The master branch cannot be deleted
+
+### Making Changes
+
+1. **Create a feature branch** from master:
+   ```bash
+   git checkout master
+   git pull origin master
+   git checkout -b your-branch-name
+   ```
+
+2. **Make your changes** and commit them:
+   ```bash
+   git add .
+   git commit -m "description of changes"
+   ```
+
+3. **Push your branch** and create a pull request:
+   ```bash
+   git push -u origin your-branch-name
+   gh pr create --title "Your PR title" --body "Description"
+   ```
+
+4. **Wait for CI checks** to pass:
+   - `test` - All tests must pass
+   - `lint` - Code must pass ESLint checks
+
+5. **Merge the PR** once checks pass (no approval required for solo development)
+
+### Never Do This
+
+❌ **DO NOT commit directly to master** - even for trivial changes like typo fixes
+❌ **DO NOT force push** to master or any branch with an open PR
+❌ **DO NOT bypass CI checks** - if tests or linting fail, fix them first
+
+If you accidentally commit to master, revert the commit and recreate it as a PR.
+
 ## Language Keywords Reference
 
 Core syntax keywords are defined in the `T` object (lines 101-130):
