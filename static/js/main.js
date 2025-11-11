@@ -319,6 +319,10 @@ class App extends Component {
                     <code class="inline fixed block">PLEASE LIKE AND SUBSCRIBE</code>
                     end of program
                 </li>
+                <li>
+                    <code class="inline fixed block">SOURCES SAY...THAT'S THE RUMOR</code>
+                    block comment
+                </li>
             </ul>
             <footer>
                 <p>
