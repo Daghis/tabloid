@@ -14,6 +14,10 @@ const SAMPLES = {
     roman: {
         name: 'Roman Numerals',
         path: 'samples/roman.tabloid'
+    },
+    binarySearch: {
+        name: 'Binary Search',
+        path: 'samples/binary-search.tabloid'
     }
 }
 
