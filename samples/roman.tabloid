@@ -7,10 +7,10 @@ SOURCES SAY
 
     Algorithm: Check values from largest to smallest, including:
     - Overlined numerals: M̅ (1M), C̅M̅ (900K), D̅ (500K), C̅D̅ (400K), C̅ (100K),
-                         X̅C̅ (90K), L̅ (50K), X̅L̅ (40K), X̅ (10K), I̅X̅ (9K), V̅ (5K)
-    - Standard numerals with special 1000 rule:
-        * If input ≤ 4999: use M for 1000
-        * If input > 4999: use I̅ for 1000
+                         X̅C̅ (90K), L̅ (50K), X̅L̅ (40K), X̅ (10K), I̅X̅ (9K), V̅ (5K), I̅V̅ (4K)
+    - Special 1000 and 4000 rules based on input magnitude:
+        * If input ≤ 4999: use M for 1000 (repeated up to 4× for 4000 = MMMM)
+        * If input > 4999: use I̅ for 1000 and I̅V̅ for 4000 (overlined system)
     - Standard numerals: CM (900), D (500), CD (400), C (100),
                         XC (90), L (50), XL (40), X (10), IX (9), V (5), IV (4), I (1)
 
@@ -65,19 +65,29 @@ DISCOVER HOW TO convertToRoman WITH n, original
                                                 WHAT IF n BEATS 4999
                                                     SHOCKING DEVELOPMENT "V̅" PLUS convertToRoman OF (n MINUS 5000), original
                                                 LIES!
-                                                    WHAT IF n BEATS 999
+                                                    WHAT IF n BEATS 3999
                                                         RUMOR HAS IT
                                                             WHAT IF original BEATS 4999
-                                                                SOURCES SAY Use I̅ for 1000 when original > 4999 THAT'S THE RUMOR
-                                                                SHOCKING DEVELOPMENT "I̅" PLUS convertToRoman OF (n MINUS 1000), original
+                                                                SOURCES SAY Use I̅V̅ for 4000 in overlined system THAT'S THE RUMOR
+                                                                SHOCKING DEVELOPMENT "I̅V̅" PLUS convertToRoman OF (n MINUS 4000), original
                                                             LIES!
-                                                                SOURCES SAY Use M for 1000 when original <= 4999 THAT'S THE RUMOR
-                                                                SHOCKING DEVELOPMENT "M" PLUS convertToRoman OF (n MINUS 1000), original
+                                                                SOURCES SAY Use MMMM for 4000 when original <= 4999 THAT'S THE RUMOR
+                                                                SHOCKING DEVELOPMENT "MMMM" PLUS convertToRoman OF (n MINUS 4000), original
                                                         END OF STORY
                                                     LIES!
-                                                        WHAT IF n BEATS 899
-                                                            SHOCKING DEVELOPMENT "CM" PLUS convertToRoman OF (n MINUS 900), original
+                                                        WHAT IF n BEATS 999
+                                                            RUMOR HAS IT
+                                                                WHAT IF original BEATS 4999
+                                                                    SOURCES SAY Use I̅ for 1000 when original > 4999 THAT'S THE RUMOR
+                                                                    SHOCKING DEVELOPMENT "I̅" PLUS convertToRoman OF (n MINUS 1000), original
+                                                                LIES!
+                                                                    SOURCES SAY Use M for 1000 when original <= 4999 THAT'S THE RUMOR
+                                                                    SHOCKING DEVELOPMENT "M" PLUS convertToRoman OF (n MINUS 1000), original
+                                                            END OF STORY
                                                         LIES!
+                                                            WHAT IF n BEATS 899
+                                                                SHOCKING DEVELOPMENT "CM" PLUS convertToRoman OF (n MINUS 900), original
+                                                            LIES!
                                                             WHAT IF n BEATS 499
                                                                 SHOCKING DEVELOPMENT "D" PLUS convertToRoman OF (n MINUS 500), original
                                                             LIES!
