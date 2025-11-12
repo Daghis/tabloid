@@ -6,7 +6,7 @@ SOURCES SAY
 
     Algorithm:
     - Numbers less than 2 are not prime
-    - For other numbers, check divisors from n-1 down to sqrt(n)
+    - For other numbers, check divisors from floor(sqrt(n)) down to 2
     - Optimization: No factor greater than sqrt(n) exists (except n itself)
 
     Uses Newton's method to compute square root approximation.
@@ -58,6 +58,31 @@ RUMOR HAS IT
 END OF STORY
 
 SOURCES SAY
+    Helper function: Return the floor (greatest integer less than or equal to x)
+
+    Uses the modulo operator to extract the fractional part,
+    then subtracts it from x to get the integer part.
+
+    Parameters:
+    - x: number to floor
+
+    Returns: floor(x)
+
+    Examples:
+    - floor(10.05) returns 10
+    - floor(11.0) returns 11
+    - floor(1.73) returns 1
+THAT'S THE RUMOR
+DISCOVER HOW TO floor WITH x
+RUMOR HAS IT
+    EXPERTS CLAIM fractional TO BE x MODULO 1
+    WHAT IF fractional IS ACTUALLY 0
+        SHOCKING DEVELOPMENT x
+    LIES!
+        SHOCKING DEVELOPMENT x MINUS fractional
+END OF STORY
+
+SOURCES SAY
     Recursive helper function to check divisors
 
     Checks if any number from 'divisor' down to 'minDivisor' divides n evenly.
@@ -66,7 +91,7 @@ SOURCES SAY
     Parameters:
     - n: number being tested for primality
     - divisor: current divisor to test
-    - minDivisor: smallest divisor to check (optimization: sqrt(n))
+    - minDivisor: smallest divisor to check (stops when divisor < minDivisor)
 
     Returns:
     - TOTALLY RIGHT if no divisors found (n is prime)
@@ -106,8 +131,8 @@ RUMOR HAS IT
         SHOCKING DEVELOPMENT COMPLETELY WRONG
     LIES! RUMOR HAS IT
         EXPERTS CLAIM sqrtN TO BE sqrtNewton OF n, n DIVIDED BY 2, 10
-        EXPERTS CLAIM minDivisor TO BE max OF sqrtN MINUS 0.5, 2
-        SHOCKING DEVELOPMENT checkDivisor OF n, n MINUS 1, minDivisor
+        EXPERTS CLAIM maxDivisor TO BE floor OF sqrtN
+        SHOCKING DEVELOPMENT checkDivisor OF n, maxDivisor, 2
     END OF STORY
 END OF STORY
 
