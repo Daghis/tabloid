@@ -1,131 +1,25 @@
-const PROG_FACTORIAL = `YOU WON'T WANT TO MISS 'Hello, World!'
-
-DISCOVER HOW TO factorial WITH n
-RUMOR HAS IT
-    WHAT IF n IS ACTUALLY 0
-        SHOCKING DEVELOPMENT 1
-    LIES!
-        SHOCKING DEVELOPMENT
-            n TIMES factorial OF n MINUS 1
-END OF STORY
-
-EXPERTS CLAIM result TO BE factorial OF 10
-YOU WON'T WANT TO MISS 'Result is'
-YOU WON'T WANT TO MISS result
-
-PLEASE LIKE AND SUBSCRIBE`
-
-const PROG_FIBONACCI = `DISCOVER HOW TO fibonacci WITH a, b, n
-RUMOR HAS IT
-    WHAT IF n SMALLER THAN 1
-        SHOCKING DEVELOPMENT b
-    LIES! RUMOR HAS IT
-        YOU WON'T WANT TO MISS b
-        SHOCKING DEVELOPMENT
-            fibonacci OF b, a PLUS b, n MINUS 1
-    END OF STORY
-END OF STORY
-
-EXPERTS CLAIM limit TO BE 10
-YOU WON'T WANT TO MISS 'First 10 Fibonacci numbers'
-EXPERTS CLAIM nothing TO BE fibonacci OF 0, 1, limit
-
-PLEASE LIKE AND SUBSCRIBE`
-
-const PROG_BINARY_SEARCH = `SOURCES SAY
-    Binary Search Number Guesser
-
-    This program uses binary search to efficiently guess a number
-    the user is thinking of between 1 and 9999.
-
-    How it works:
-    - User thinks of a number between 1 and 9999
-    - Computer makes a guess using binary search
-    - User provides feedback: 1 (too high), 2 (too low), 3 (correct)
-    - Computer narrows the search range and guesses again
-    - Process repeats until the number is found
-
-    Algorithm:
-    - Start with low=1 and high=9999
-    - Guess the midpoint: (low + high) / 2
-    - Based on feedback:
-        * If too high: set high = guess - 1
-        * If too low: set low = guess + 1
-        * If correct: number found!
-    - Recursively search the narrowed range
-
-    Time complexity: O(log n) - finds any number in at most 14 guesses!
-
-    Example game:
-        Think of: 73
-        Guess 50 → too low
-        Guess 75 → too high
-        Guess 62 → too low
-        Guess 68 → too low
-        Guess 71 → too low
-        Guess 73 → correct!
-THAT'S THE RUMOR
-
-YOU WON'T WANT TO MISS 'Binary Search Number Guesser'
-YOU WON'T WANT TO MISS ''
-YOU WON'T WANT TO MISS 'Think of a number between 1 and 9999...'
-YOU WON'T WANT TO MISS "I'll try to guess it using binary search!"
-YOU WON'T WANT TO MISS ''
-
-SOURCES SAY
-    Recursive binary search guessing function
-    Parameters: low (min possible), high (max possible), count (guess number)
-THAT'S THE RUMOR
-DISCOVER HOW TO binaryGuess WITH low, high, count
-RUMOR HAS IT
-    SOURCES SAY Calculate midpoint using integer division THAT'S THE RUMOR
-    EXPERTS CLAIM total TO BE low PLUS high
-    EXPERTS CLAIM remainder TO BE total MODULO 2
-    EXPERTS CLAIM guess TO BE (total MINUS remainder) DIVIDED BY 2
-
-    YOU WON'T WANT TO MISS ''
-    YOU WON'T WANT TO MISS 'Guess #' PLUS count
-    YOU WON'T WANT TO MISS 'My guess is: ' PLUS guess
-    YOU WON'T WANT TO MISS ''
-
-    EXPERTS CLAIM feedback TO BE LATEST NEWS ON 'Enter 1 (too high), 2 (too low), or 3 (correct): '
-
-    WHAT IF feedback IS ACTUALLY '3'
-        RUMOR HAS IT
-            YOU WON'T WANT TO MISS ''
-            YOU WON'T WANT TO MISS 'I found it in ' PLUS (count PLUS ' guesses!')
-            YOU WON'T WANT TO MISS 'Thanks for playing!'
-            SHOCKING DEVELOPMENT TOTALLY RIGHT
-        END OF STORY
-    LIES! RUMOR HAS IT
-        WHAT IF feedback IS ACTUALLY '1'
-            RUMOR HAS IT
-                SOURCES SAY Too high: search lower half THAT'S THE RUMOR
-                EXPERTS CLAIM newHigh TO BE guess MINUS 1
-                SHOCKING DEVELOPMENT binaryGuess OF low, newHigh, count PLUS 1
-            END OF STORY
-        LIES! RUMOR HAS IT
-            WHAT IF feedback IS ACTUALLY '2'
-                RUMOR HAS IT
-                    SOURCES SAY Too low: search upper half THAT'S THE RUMOR
-                    EXPERTS CLAIM newLow TO BE guess PLUS 1
-                    SHOCKING DEVELOPMENT binaryGuess OF newLow, high, count PLUS 1
-                END OF STORY
-            LIES!
-                RUMOR HAS IT
-                    YOU WON'T WANT TO MISS "Invalid input! Please enter 1, 2, or 3."
-                    SHOCKING DEVELOPMENT binaryGuess OF low, high, count
-                END OF STORY
-        END OF STORY
-    END OF STORY
-END OF STORY
-
-SOURCES SAY Start the game! THAT'S THE RUMOR
-EXPERTS CLAIM result TO BE binaryGuess OF 1, 9999, 1
-
-PLEASE LIKE AND SUBSCRIBE`
-
-const PROG_DEFAULT = PROG_FIBONACCI
+const SAMPLES = {
+    fibonacci: {
+        name: 'Fibonacci',
+        path: 'samples/fibonacci.tabloid'
+    },
+    factorial: {
+        name: 'Factorial',
+        path: 'samples/factorial.tabloid'
+    },
+    prime: {
+        name: 'Prime Checker',
+        path: 'samples/prime.tabloid'
+    },
+    roman: {
+        name: 'Roman Numerals',
+        path: 'samples/roman.tabloid'
+    },
+    binarySearch: {
+        name: 'Binary Search',
+        path: 'samples/binary-search.tabloid'
+    }
+}
 
 const HEADLINES = [
     'You Won\'t Believe What This Programming Language Can Do!',
@@ -150,10 +44,12 @@ const {
 
 class Editor extends Component {
     init() {
-        this.prog = PROG_DEFAULT
+        this.prog = ''
+        this.currentSample = 'fibonacci'
         // script appends to it
         this.output = ''
         this.errors = ''
+        this.currentFetchController = null
 
         this.handleRun = () => this.eval()
         this.handleInput = evt => {
@@ -173,21 +69,47 @@ class Editor extends Component {
                 }
             }
         }
-        this.setFactorial = () => {
-            this.prog = PROG_FACTORIAL
-            this.output = this.errors = ''
-            this.render()
+        this.loadSample = async (sampleKey) => {
+            const sample = SAMPLES[sampleKey]
+            if (!sample) {
+                this.errors = `Sample "${sampleKey}" not found`
+                this.render()
+                return
+            }
+
+            // Abort any in-flight fetch
+            if (this.currentFetchController) {
+                this.currentFetchController.abort()
+            }
+
+            // Create new AbortController for this request
+            this.currentFetchController = new AbortController()
+            const signal = this.currentFetchController.signal
+
+            try {
+                const response = await fetch(sample.path, { signal })
+                if (!response.ok) {
+                    throw new Error(`Failed to load sample: ${response.statusText}`)
+                }
+                this.prog = await response.text()
+                this.currentSample = sampleKey
+                this.output = this.errors = ''
+                this.render()
+            } catch (e) {
+                // Don't show error for intentional aborts
+                if (e.name === 'AbortError') {
+                    return
+                }
+                this.errors = `Error loading sample: ${e.message}`
+                this.render()
+            }
         }
-        this.setFibonacci= () => {
-            this.prog = PROG_FIBONACCI
-            this.output = this.errors = ''
-            this.render()
+        this.handleSampleChange = evt => {
+            this.loadSample(evt.target.value)
         }
-        this.setBinarySearch = () => {
-            this.prog = PROG_BINARY_SEARCH
-            this.output = this.errors = ''
-            this.render()
-        }
+
+        // Load default sample
+        this.loadSample('fibonacci')
     }
     eval() {
         this.output = ''
@@ -213,12 +135,10 @@ class Editor extends Component {
     compose() {
         return jdom`<div class="editor fixed block">
             <div class="controls">
-                <button class="block"
-                    onclick=${this.setFibonacci}>Fibonacci <span class="desktop">sample</span></button>
-                <button class="block"
-                    onclick=${this.setFactorial}>Factorial <span class="desktop">sample</span></button>
-                <button class="block"
-                    onclick=${this.setBinarySearch}>Binary Search <span class="desktop">sample</span></button>
+                <select class="block" value=${this.currentSample} onchange=${this.handleSampleChange}>
+                    ${Object.entries(SAMPLES).map(([key, sample]) =>
+        jdom`<option value=${key}>${sample.name}</option>`)}
+                </select>
                 <button class="accent block"
                     onclick=${this.handleRun}>Run<span class="desktop"> this</span>!</button>
             </div>
