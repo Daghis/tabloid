@@ -36,17 +36,17 @@ const PROG_BINARY_SEARCH = `SOURCES SAY
     Binary Search Number Guesser
 
     This program uses binary search to efficiently guess a number
-    the user is thinking of between 1 and 100.
+    the user is thinking of between 1 and 9999.
 
     How it works:
-    - User thinks of a number between 1 and 100
+    - User thinks of a number between 1 and 9999
     - Computer makes a guess using binary search
     - User provides feedback: 1 (too high), 2 (too low), 3 (correct)
     - Computer narrows the search range and guesses again
     - Process repeats until the number is found
 
     Algorithm:
-    - Start with low=1 and high=100
+    - Start with low=1 and high=9999
     - Guess the midpoint: (low + high) / 2
     - Based on feedback:
         * If too high: set high = guess - 1
@@ -54,7 +54,7 @@ const PROG_BINARY_SEARCH = `SOURCES SAY
         * If correct: number found!
     - Recursively search the narrowed range
 
-    Time complexity: O(log n) - finds any number in at most 7 guesses!
+    Time complexity: O(log n) - finds any number in at most 14 guesses!
 
     Example game:
         Think of: 73
@@ -68,7 +68,7 @@ THAT'S THE RUMOR
 
 YOU WON'T WANT TO MISS 'Binary Search Number Guesser'
 YOU WON'T WANT TO MISS ''
-YOU WON'T WANT TO MISS 'Think of a number between 1 and 100...'
+YOU WON'T WANT TO MISS 'Think of a number between 1 and 9999...'
 YOU WON'T WANT TO MISS "I'll try to guess it using binary search!"
 YOU WON'T WANT TO MISS ''
 
@@ -121,7 +121,7 @@ RUMOR HAS IT
 END OF STORY
 
 SOURCES SAY Start the game! THAT'S THE RUMOR
-EXPERTS CLAIM result TO BE binaryGuess OF 1, 100, 1
+EXPERTS CLAIM result TO BE binaryGuess OF 1, 9999, 1
 
 PLEASE LIKE AND SUBSCRIBE`
 
