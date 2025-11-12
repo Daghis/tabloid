@@ -26,3 +26,6 @@ coverage/
 # Build outputs (if any added in future)
 dist/
 build/
+
+# Generated files - samples are copied to static/ during deployment
+static/samples/

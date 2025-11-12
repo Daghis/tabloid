@@ -1,38 +1,21 @@
-const PROG_FACTORIAL = `YOU WON'T WANT TO MISS 'Hello, World!'
-
-DISCOVER HOW TO factorial WITH n
-RUMOR HAS IT
-    WHAT IF n IS ACTUALLY 0
-        SHOCKING DEVELOPMENT 1
-    LIES!
-        SHOCKING DEVELOPMENT
-            n TIMES factorial OF n MINUS 1
-END OF STORY
-
-EXPERTS CLAIM result TO BE factorial OF 10
-YOU WON'T WANT TO MISS 'Result is'
-YOU WON'T WANT TO MISS result
-
-PLEASE LIKE AND SUBSCRIBE`
-
-const PROG_FIBONACCI = `DISCOVER HOW TO fibonacci WITH a, b, n
-RUMOR HAS IT
-    WHAT IF n SMALLER THAN 1
-        SHOCKING DEVELOPMENT b
-    LIES! RUMOR HAS IT
-        YOU WON'T WANT TO MISS b
-        SHOCKING DEVELOPMENT
-            fibonacci OF b, a PLUS b, n MINUS 1
-    END OF STORY
-END OF STORY
-
-EXPERTS CLAIM limit TO BE 10
-YOU WON'T WANT TO MISS 'First 10 Fibonacci numbers'
-EXPERTS CLAIM nothing TO BE fibonacci OF 0, 1, limit
-
-PLEASE LIKE AND SUBSCRIBE`
-
-const PROG_DEFAULT = PROG_FIBONACCI
+const SAMPLES = {
+    fibonacci: {
+        name: 'Fibonacci',
+        path: 'samples/fibonacci.tabloid'
+    },
+    factorial: {
+        name: 'Factorial',
+        path: 'samples/factorial.tabloid'
+    },
+    prime: {
+        name: 'Prime Checker',
+        path: 'samples/prime.tabloid'
+    },
+    roman: {
+        name: 'Roman Numerals',
+        path: 'samples/roman.tabloid'
+    }
+}
 
 const HEADLINES = [
     'You Won\'t Believe What This Programming Language Can Do!',
@@ -57,7 +40,8 @@ const {
 
 class Editor extends Component {
     init() {
-        this.prog = PROG_DEFAULT
+        this.prog = ''
+        this.currentSample = 'fibonacci'
         // script appends to it
         this.output = ''
         this.errors = ''
@@ -80,16 +64,34 @@ class Editor extends Component {
                 }
             }
         }
-        this.setFactorial = () => {
-            this.prog = PROG_FACTORIAL
-            this.output = this.errors = ''
-            this.render()
+        this.loadSample = async (sampleKey) => {
+            const sample = SAMPLES[sampleKey]
+            if (!sample) {
+                this.errors = `Sample "${sampleKey}" not found`
+                this.render()
+                return
+            }
+
+            try {
+                const response = await fetch(sample.path)
+                if (!response.ok) {
+                    throw new Error(`Failed to load sample: ${response.statusText}`)
+                }
+                this.prog = await response.text()
+                this.currentSample = sampleKey
+                this.output = this.errors = ''
+                this.render()
+            } catch (e) {
+                this.errors = `Error loading sample: ${e.message}`
+                this.render()
+            }
         }
-        this.setFibonacci= () => {
-            this.prog = PROG_FIBONACCI
-            this.output = this.errors = ''
-            this.render()
+        this.handleSampleChange = evt => {
+            this.loadSample(evt.target.value)
         }
+
+        // Load default sample
+        this.loadSample('fibonacci')
     }
     eval() {
         this.output = ''
@@ -115,10 +117,10 @@ class Editor extends Component {
     compose() {
         return jdom`<div class="editor fixed block">
             <div class="controls">
-                <button class="block"
-                    onclick=${this.setFibonacci}>Fibonacci <span class="desktop">sample</span></button>
-                <button class="block"
-                    onclick=${this.setFactorial}>Factorial <span class="desktop">sample</span></button>
+                <select class="block" value=${this.currentSample} onchange=${this.handleSampleChange}>
+                    ${Object.entries(SAMPLES).map(([key, sample]) =>
+                        jdom`<option value=${key}>${sample.name}</option>`)}
+                </select>
                 <button class="accent block"
                     onclick=${this.handleRun}>Run<span class="desktop"> this</span>!</button>
             </div>
