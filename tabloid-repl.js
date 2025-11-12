@@ -16,12 +16,19 @@ function readlineSync(prompt) {
         const bytes = []
         const buffer = Buffer.alloc(1)
         try {
-            while (true) {
+            let reading = true
+            while (reading) {
                 const bytesRead = fs.readSync(process.stdin.fd, buffer, 0, 1, null)
-                if (bytesRead === 0) break  // EOF
-                const byte = buffer[0]
-                if (byte === 0x0A) break  // newline (\n)
-                bytes.push(byte)
+                if (bytesRead === 0) {
+                    reading = false  // EOF
+                } else {
+                    const byte = buffer[0]
+                    if (byte === 0x0A) {
+                        reading = false  // newline (\n)
+                    } else {
+                        bytes.push(byte)
+                    }
+                }
             }
             return Buffer.from(bytes).toString('utf8').trim()
         } catch (e) {
