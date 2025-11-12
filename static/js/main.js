@@ -119,7 +119,7 @@ class Editor extends Component {
             <div class="controls">
                 <select class="block" value=${this.currentSample} onchange=${this.handleSampleChange}>
                     ${Object.entries(SAMPLES).map(([key, sample]) =>
-                        jdom`<option value=${key}>${sample.name}</option>`)}
+        jdom`<option value=${key}>${sample.name}</option>`)}
                 </select>
                 <button class="accent block"
                     onclick=${this.handleRun}>Run<span class="desktop"> this</span>!</button>
