@@ -44,8 +44,10 @@ SOURCES SAY
 THAT'S THE RUMOR
 DISCOVER HOW TO binaryGuess WITH low, high, count
 RUMOR HAS IT
-    SOURCES SAY Calculate midpoint THAT'S THE RUMOR
-    EXPERTS CLAIM guess TO BE (low PLUS high) DIVIDED BY 2
+    SOURCES SAY Calculate midpoint using integer division THAT'S THE RUMOR
+    EXPERTS CLAIM total TO BE low PLUS high
+    EXPERTS CLAIM remainder TO BE total MODULO 2
+    EXPERTS CLAIM guess TO BE (total MINUS remainder) DIVIDED BY 2
 
     YOU WON'T WANT TO MISS ''
     YOU WON'T WANT TO MISS 'Guess #' PLUS count
@@ -54,7 +56,7 @@ RUMOR HAS IT
 
     EXPERTS CLAIM feedback TO BE LATEST NEWS ON 'Enter 1 (too high), 2 (too low), or 3 (correct): '
 
-    WHAT IF feedback IS ACTUALLY 3
+    WHAT IF feedback IS ACTUALLY '3'
         RUMOR HAS IT
             YOU WON'T WANT TO MISS ''
             YOU WON'T WANT TO MISS 'I found it in ' PLUS (count PLUS ' guesses!')
@@ -62,14 +64,14 @@ RUMOR HAS IT
             SHOCKING DEVELOPMENT TOTALLY RIGHT
         END OF STORY
     LIES! RUMOR HAS IT
-        WHAT IF feedback IS ACTUALLY 1
+        WHAT IF feedback IS ACTUALLY '1'
             RUMOR HAS IT
                 SOURCES SAY Too high: search lower half THAT'S THE RUMOR
                 EXPERTS CLAIM newHigh TO BE guess MINUS 1
                 SHOCKING DEVELOPMENT binaryGuess OF low, newHigh, count PLUS 1
             END OF STORY
         LIES! RUMOR HAS IT
-            WHAT IF feedback IS ACTUALLY 2
+            WHAT IF feedback IS ACTUALLY '2'
                 RUMOR HAS IT
                     SOURCES SAY Too low: search upper half THAT'S THE RUMOR
                     EXPERTS CLAIM newLow TO BE guess PLUS 1

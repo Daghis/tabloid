@@ -10,14 +10,20 @@ const { tokenize, Parser, Environment } = require('./lib/tabloid-node')
 function readlineSync(prompt) {
     const fs = require('fs')
 
-    // For piped input (non-TTY), read synchronously from stdin
+    // For piped input (non-TTY), read synchronously from stdin one byte at a time until newline
     if (!process.stdin.isTTY) {
         process.stderr.write(prompt + ' ')
-        const buffer = Buffer.alloc(1024)
+        let line = ''
+        const buffer = Buffer.alloc(1)
         try {
-            const bytesRead = fs.readSync(process.stdin.fd, buffer, 0, buffer.length, null)
-            if (bytesRead === 0) return ''
-            return buffer.toString('utf8', 0, bytesRead).trim()
+            while (true) {
+                const bytesRead = fs.readSync(process.stdin.fd, buffer, 0, 1, null)
+                if (bytesRead === 0) break  // EOF
+                const char = buffer.toString('utf8')
+                if (char === '\n') break  // End of line
+                line += char
+            }
+            return line.trim()
         } catch (e) {
             return ''
         }
