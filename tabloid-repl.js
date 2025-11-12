@@ -13,17 +13,17 @@ function readlineSync(prompt) {
     // For piped input (non-TTY), read synchronously from stdin one byte at a time until newline
     if (!process.stdin.isTTY) {
         process.stderr.write(prompt + ' ')
-        let line = ''
+        const bytes = []
         const buffer = Buffer.alloc(1)
         try {
             while (true) {
                 const bytesRead = fs.readSync(process.stdin.fd, buffer, 0, 1, null)
                 if (bytesRead === 0) break  // EOF
-                const char = buffer.toString('utf8')
-                if (char === '\n') break  // End of line
-                line += char
+                const byte = buffer[0]
+                if (byte === 0x0A) break  // newline (\n)
+                bytes.push(byte)
             }
-            return line.trim()
+            return Buffer.from(bytes).toString('utf8').trim()
         } catch (e) {
             return ''
         }
