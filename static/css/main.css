@@ -132,6 +132,18 @@ header .lang.block {
     justify-content: flex-end;
 }
 
+.editor .controls select,
+.editor .controls button {
+    font-size: 1em;
+    margin-right: 0.5em;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+
+.editor .controls button {
+    margin-right: 0;
+}
+
 .editor .code {
     padding: 0;
     position: relative;
