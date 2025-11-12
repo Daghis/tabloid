@@ -45,6 +45,7 @@ class Editor extends Component {
         // script appends to it
         this.output = ''
         this.errors = ''
+        this.currentFetchController = null
 
         this.handleRun = () => this.eval()
         this.handleInput = evt => {
@@ -72,8 +73,17 @@ class Editor extends Component {
                 return
             }
 
+            // Abort any in-flight fetch
+            if (this.currentFetchController) {
+                this.currentFetchController.abort()
+            }
+
+            // Create new AbortController for this request
+            this.currentFetchController = new AbortController()
+            const signal = this.currentFetchController.signal
+
             try {
-                const response = await fetch(sample.path)
+                const response = await fetch(sample.path, { signal })
                 if (!response.ok) {
                     throw new Error(`Failed to load sample: ${response.statusText}`)
                 }
@@ -82,6 +92,10 @@ class Editor extends Component {
                 this.output = this.errors = ''
                 this.render()
             } catch (e) {
+                // Don't show error for intentional aborts
+                if (e.name === 'AbortError') {
+                    return
+                }
                 this.errors = `Error loading sample: ${e.message}`
                 this.render()
             }
