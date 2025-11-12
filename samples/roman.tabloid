@@ -1,0 +1,153 @@
+SOURCES SAY
+    Roman Numeral Converter with Overline Notation
+
+    Converts integers (1-5,999,999) to Roman numerals using recursive descent.
+    Supports vinculum (overline) notation for large numbers where an overline
+    multiplies the value by 1,000.
+
+    Code Structure:
+    - convertStandardNumerals: Handles 1-999 (standard Roman numerals)
+    - convertToRoman: Handles 1000+ (vinculum and thousands logic)
+
+    Algorithm: Check values from largest to smallest, including:
+    - Overlined numerals: M̅ (1M), C̅M̅ (900K), D̅ (500K), C̅D̅ (400K), C̅ (100K),
+                         X̅C̅ (90K), L̅ (50K), X̅L̅ (40K), X̅ (10K), I̅X̅ (9K), V̅ (5K), I̅V̅ (4K)
+    - Special 1000 and 4000 rules based on input magnitude:
+        * If input ≤ 4999: use M for 1000 (repeated up to 4× for 4000 = MMMM)
+        * If input > 4999: use I̅ for 1000 and I̅V̅ for 4000 (overlined system)
+    - Standard numerals: CM (900), D (500), CD (400), C (100),
+                        XC (90), L (50), XL (40), X (10), IX (9), V (5), IV (4), I (1)
+
+    Examples:
+        1 → I
+        4 → IV
+        42 → XLII
+        1994 → MCMXCIV
+        2024 → MMXXIV
+        3999 → MMMCMXCIX
+        4000 → MMMM
+        5000 → V̅
+        1994000 → M̅C̅M̅X̅C̅I̅I̅I̅I̅
+        5999999 → M̅M̅M̅M̅M̅C̅M̅X̅C̅I̅X̅CMXCIX
+
+    Limitation: This converts Integer → Roman only.
+    Roman → Integer conversion is not possible in Tabloid due to lack of string indexing.
+THAT'S THE RUMOR
+
+DISCOVER HOW TO convertStandardNumerals WITH n, original
+    RUMOR HAS IT
+        WHAT IF n BEATS 899
+            SHOCKING DEVELOPMENT "CM" PLUS convertStandardNumerals OF (n MINUS 900), original
+        LIES!
+            WHAT IF n BEATS 499
+                SHOCKING DEVELOPMENT "D" PLUS convertStandardNumerals OF (n MINUS 500), original
+            LIES!
+                WHAT IF n BEATS 399
+                    SHOCKING DEVELOPMENT "CD" PLUS convertStandardNumerals OF (n MINUS 400), original
+                LIES!
+                    WHAT IF n BEATS 99
+                        SHOCKING DEVELOPMENT "C" PLUS convertStandardNumerals OF (n MINUS 100), original
+                    LIES!
+                        WHAT IF n BEATS 89
+                            SHOCKING DEVELOPMENT "XC" PLUS convertStandardNumerals OF (n MINUS 90), original
+                        LIES!
+                            WHAT IF n BEATS 49
+                                SHOCKING DEVELOPMENT "L" PLUS convertStandardNumerals OF (n MINUS 50), original
+                            LIES!
+                                WHAT IF n BEATS 39
+                                    SHOCKING DEVELOPMENT "XL" PLUS convertStandardNumerals OF (n MINUS 40), original
+                                LIES!
+                                    WHAT IF n BEATS 9
+                                        SHOCKING DEVELOPMENT "X" PLUS convertStandardNumerals OF (n MINUS 10), original
+                                    LIES!
+                                        WHAT IF n BEATS 8
+                                            SHOCKING DEVELOPMENT "IX" PLUS convertStandardNumerals OF (n MINUS 9), original
+                                        LIES!
+                                            WHAT IF n BEATS 4
+                                                SHOCKING DEVELOPMENT "V" PLUS convertStandardNumerals OF (n MINUS 5), original
+                                            LIES!
+                                                WHAT IF n BEATS 3
+                                                    SHOCKING DEVELOPMENT "IV" PLUS convertStandardNumerals OF (n MINUS 4), original
+                                                LIES!
+                                                    WHAT IF n BEATS 0
+                                                        SHOCKING DEVELOPMENT "I" PLUS convertStandardNumerals OF (n MINUS 1), original
+                                                    LIES!
+                                                        SOURCES SAY Base case: number is 0 THAT'S THE RUMOR
+                                                        SHOCKING DEVELOPMENT ""
+    END OF STORY
+
+DISCOVER HOW TO convertToRoman WITH n, original
+    RUMOR HAS IT
+        WHAT IF n BEATS 999999
+            SHOCKING DEVELOPMENT "M̅" PLUS convertToRoman OF (n MINUS 1000000), original
+        LIES!
+            WHAT IF n BEATS 899999
+                SHOCKING DEVELOPMENT "C̅M̅" PLUS convertToRoman OF (n MINUS 900000), original
+            LIES!
+                WHAT IF n BEATS 499999
+                    SHOCKING DEVELOPMENT "D̅" PLUS convertToRoman OF (n MINUS 500000), original
+                LIES!
+                    WHAT IF n BEATS 399999
+                        SHOCKING DEVELOPMENT "C̅D̅" PLUS convertToRoman OF (n MINUS 400000), original
+                    LIES!
+                        WHAT IF n BEATS 99999
+                            SHOCKING DEVELOPMENT "C̅" PLUS convertToRoman OF (n MINUS 100000), original
+                        LIES!
+                            WHAT IF n BEATS 89999
+                                SHOCKING DEVELOPMENT "X̅C̅" PLUS convertToRoman OF (n MINUS 90000), original
+                            LIES!
+                                WHAT IF n BEATS 49999
+                                    SHOCKING DEVELOPMENT "L̅" PLUS convertToRoman OF (n MINUS 50000), original
+                                LIES!
+                                    WHAT IF n BEATS 39999
+                                        SHOCKING DEVELOPMENT "X̅L̅" PLUS convertToRoman OF (n MINUS 40000), original
+                                    LIES!
+                                        WHAT IF n BEATS 9999
+                                            SHOCKING DEVELOPMENT "X̅" PLUS convertToRoman OF (n MINUS 10000), original
+                                        LIES!
+                                            WHAT IF n BEATS 8999
+                                                SHOCKING DEVELOPMENT "I̅X̅" PLUS convertToRoman OF (n MINUS 9000), original
+                                            LIES!
+                                                WHAT IF n BEATS 4999
+                                                    SHOCKING DEVELOPMENT "V̅" PLUS convertToRoman OF (n MINUS 5000), original
+                                                LIES!
+                                                    WHAT IF n BEATS 3999
+                                                        RUMOR HAS IT
+                                                            WHAT IF original BEATS 4999
+                                                                SOURCES SAY Use I̅V̅ for 4000 in overlined system THAT'S THE RUMOR
+                                                                SHOCKING DEVELOPMENT "I̅V̅" PLUS convertToRoman OF (n MINUS 4000), original
+                                                            LIES!
+                                                                SOURCES SAY Use MMMM for 4000 when original <= 4999 THAT'S THE RUMOR
+                                                                SHOCKING DEVELOPMENT "MMMM" PLUS convertToRoman OF (n MINUS 4000), original
+                                                        END OF STORY
+                                                    LIES!
+                                                        WHAT IF n BEATS 999
+                                                            RUMOR HAS IT
+                                                                WHAT IF original BEATS 4999
+                                                                    SOURCES SAY Use I̅ for 1000 when original > 4999 THAT'S THE RUMOR
+                                                                    SHOCKING DEVELOPMENT "I̅" PLUS convertToRoman OF (n MINUS 1000), original
+                                                                LIES!
+                                                                    SOURCES SAY Use M for 1000 when original <= 4999 THAT'S THE RUMOR
+                                                                    SHOCKING DEVELOPMENT "M" PLUS convertToRoman OF (n MINUS 1000), original
+                                                            END OF STORY
+                                                        LIES!
+                                                            SOURCES SAY Delegate to standard numerals (1-999) THAT'S THE RUMOR
+                                                            SHOCKING DEVELOPMENT convertStandardNumerals OF n, original
+    END OF STORY
+
+SOURCES SAY Main program THAT'S THE RUMOR
+
+EXPERTS CLAIM number TO BE LATEST NEWS ON "Enter a number (1-5999999): "
+
+WHAT IF number BEATS 0
+    RUMOR HAS IT
+        WHAT IF number BEATS 5999999
+            YOU WON'T WANT TO MISS "Number too large! Please enter 1-5999999."
+        LIES!
+            EXPERTS CLAIM result TO BE convertToRoman OF number, number
+            YOU WON'T WANT TO MISS (number PLUS " in Roman numerals is ") PLUS result
+    END OF STORY
+LIES!
+    YOU WON'T WANT TO MISS "Please enter a positive number!"
+
+PLEASE LIKE AND SUBSCRIBE
