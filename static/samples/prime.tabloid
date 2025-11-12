@@ -1,13 +1,15 @@
 SOURCES SAY
-    Prime Number Checker
+    Prime Number Checker (Optimized with sqrt)
 
     This program prompts the user for a number and determines
     whether it is prime using a recursive algorithm.
 
     Algorithm:
     - Numbers less than 2 are not prime
-    - 2 is prime (only even prime)
-    - For other numbers, check if any number from n-1 down to 2 divides evenly
+    - For other numbers, check divisors from n-1 down to sqrt(n)
+    - Optimization: No factor greater than sqrt(n) exists (except n itself)
+
+    Uses Newton's method to compute square root approximation.
 THAT'S THE RUMOR
 
 YOU WON'T WANT TO MISS 'Prime Number Checker'
@@ -16,33 +18,96 @@ YOU WON'T WANT TO MISS ''
 EXPERTS CLAIM num TO BE LATEST NEWS ON 'Enter a number:'
 
 SOURCES SAY
-    Recursive helper function to check divisors from high to low
+    Helper function: Compute square root using Newton's method
+
+    Newton's method iteratively refines an initial guess:
+    newGuess = (guess + n/guess) / 2
+
+    Parameters:
+    - n: number to find square root of
+    - guess: current approximation
+    - iterations: number of refinement steps remaining
+
+    Returns: approximate square root of n
 THAT'S THE RUMOR
-DISCOVER HOW TO checkDivisor WITH n, divisor
+DISCOVER HOW TO sqrtNewton WITH n, guess, iterations
 RUMOR HAS IT
-    WHAT IF divisor SMALLER THAN 2
+    WHAT IF iterations SMALLER THAN 1
+        SHOCKING DEVELOPMENT guess
+    LIES! RUMOR HAS IT
+        EXPERTS CLAIM newGuess TO BE (guess PLUS (n DIVIDED BY guess)) DIVIDED BY 2
+        SHOCKING DEVELOPMENT sqrtNewton OF n, newGuess, iterations MINUS 1
+    END OF STORY
+END OF STORY
+
+SOURCES SAY
+    Helper function: Return the maximum of two numbers
+
+    Parameters:
+    - a: first number
+    - b: second number
+
+    Returns: the larger of a and b
+THAT'S THE RUMOR
+DISCOVER HOW TO max WITH a, b
+RUMOR HAS IT
+    WHAT IF a BEATS b
+        SHOCKING DEVELOPMENT a
+    LIES!
+        SHOCKING DEVELOPMENT b
+END OF STORY
+
+SOURCES SAY
+    Recursive helper function to check divisors
+
+    Checks if any number from 'divisor' down to 'minDivisor' divides n evenly.
+    Uses recursion to test each potential divisor.
+
+    Parameters:
+    - n: number being tested for primality
+    - divisor: current divisor to test
+    - minDivisor: smallest divisor to check (optimization: sqrt(n))
+
+    Returns:
+    - TOTALLY RIGHT if no divisors found (n is prime)
+    - COMPLETELY WRONG if a divisor is found (n is not prime)
+THAT'S THE RUMOR
+DISCOVER HOW TO checkDivisor WITH n, divisor, minDivisor
+RUMOR HAS IT
+    WHAT IF divisor SMALLER THAN minDivisor
         SHOCKING DEVELOPMENT TOTALLY RIGHT
     LIES! RUMOR HAS IT
         EXPERTS CLAIM remainder TO BE n MODULO divisor
         WHAT IF remainder IS ACTUALLY 0
             SHOCKING DEVELOPMENT COMPLETELY WRONG
         LIES!
-            SHOCKING DEVELOPMENT checkDivisor OF n, divisor MINUS 1
+            SHOCKING DEVELOPMENT checkDivisor OF n, divisor MINUS 1, minDivisor
     END OF STORY
 END OF STORY
 
 SOURCES SAY
-    Main prime checking function
+    Main prime checking function with sqrt optimization
+
+    Instead of checking all divisors from 2 to n-1, we only check
+    up to sqrt(n). This works because if n = a * b and a <= b,
+    then a <= sqrt(n) <= b. So every composite number has at least
+    one factor <= sqrt(n).
+
+    Parameters:
+    - n: number to test for primality
+
+    Returns:
+    - TOTALLY RIGHT if n is prime
+    - COMPLETELY WRONG if n is not prime
 THAT'S THE RUMOR
 DISCOVER HOW TO isPrime WITH n
 RUMOR HAS IT
     WHAT IF n SMALLER THAN 2
         SHOCKING DEVELOPMENT COMPLETELY WRONG
     LIES! RUMOR HAS IT
-        WHAT IF n IS ACTUALLY 2
-            SHOCKING DEVELOPMENT TOTALLY RIGHT
-        LIES!
-            SHOCKING DEVELOPMENT checkDivisor OF n, n MINUS 1
+        EXPERTS CLAIM sqrtN TO BE sqrtNewton OF n, n DIVIDED BY 2, 10
+        EXPERTS CLAIM minDivisor TO BE max OF sqrtN MINUS 0.5, 2
+        SHOCKING DEVELOPMENT checkDivisor OF n, n MINUS 1, minDivisor
     END OF STORY
 END OF STORY
 
