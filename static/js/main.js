@@ -32,6 +32,97 @@ EXPERTS CLAIM nothing TO BE fibonacci OF 0, 1, limit
 
 PLEASE LIKE AND SUBSCRIBE`
 
+const PROG_BINARY_SEARCH = `SOURCES SAY
+    Binary Search Number Guesser
+
+    This program uses binary search to efficiently guess a number
+    the user is thinking of between 1 and 100.
+
+    How it works:
+    - User thinks of a number between 1 and 100
+    - Computer makes a guess using binary search
+    - User provides feedback: 1 (too high), 2 (too low), 3 (correct)
+    - Computer narrows the search range and guesses again
+    - Process repeats until the number is found
+
+    Algorithm:
+    - Start with low=1 and high=100
+    - Guess the midpoint: (low + high) / 2
+    - Based on feedback:
+        * If too high: set high = guess - 1
+        * If too low: set low = guess + 1
+        * If correct: number found!
+    - Recursively search the narrowed range
+
+    Time complexity: O(log n) - finds any number in at most 7 guesses!
+
+    Example game:
+        Think of: 73
+        Guess 50 → too low
+        Guess 75 → too high
+        Guess 62 → too low
+        Guess 68 → too low
+        Guess 71 → too low
+        Guess 73 → correct!
+THAT'S THE RUMOR
+
+YOU WON'T WANT TO MISS 'Binary Search Number Guesser'
+YOU WON'T WANT TO MISS ''
+YOU WON'T WANT TO MISS 'Think of a number between 1 and 100...'
+YOU WON'T WANT TO MISS "I'll try to guess it using binary search!"
+YOU WON'T WANT TO MISS ''
+
+SOURCES SAY
+    Recursive binary search guessing function
+    Parameters: low (min possible), high (max possible), count (guess number)
+THAT'S THE RUMOR
+DISCOVER HOW TO binaryGuess WITH low, high, count
+RUMOR HAS IT
+    SOURCES SAY Calculate midpoint THAT'S THE RUMOR
+    EXPERTS CLAIM guess TO BE (low PLUS high) DIVIDED BY 2
+
+    YOU WON'T WANT TO MISS ''
+    YOU WON'T WANT TO MISS 'Guess #' PLUS count
+    YOU WON'T WANT TO MISS 'My guess is: ' PLUS guess
+    YOU WON'T WANT TO MISS ''
+
+    EXPERTS CLAIM feedback TO BE LATEST NEWS ON 'Enter 1 (too high), 2 (too low), or 3 (correct): '
+
+    WHAT IF feedback IS ACTUALLY 3
+        RUMOR HAS IT
+            YOU WON'T WANT TO MISS ''
+            YOU WON'T WANT TO MISS 'I found it in ' PLUS (count PLUS ' guesses!')
+            YOU WON'T WANT TO MISS 'Thanks for playing!'
+            SHOCKING DEVELOPMENT TOTALLY RIGHT
+        END OF STORY
+    LIES! RUMOR HAS IT
+        WHAT IF feedback IS ACTUALLY 1
+            RUMOR HAS IT
+                SOURCES SAY Too high: search lower half THAT'S THE RUMOR
+                EXPERTS CLAIM newHigh TO BE guess MINUS 1
+                SHOCKING DEVELOPMENT binaryGuess OF low, newHigh, count PLUS 1
+            END OF STORY
+        LIES! RUMOR HAS IT
+            WHAT IF feedback IS ACTUALLY 2
+                RUMOR HAS IT
+                    SOURCES SAY Too low: search upper half THAT'S THE RUMOR
+                    EXPERTS CLAIM newLow TO BE guess PLUS 1
+                    SHOCKING DEVELOPMENT binaryGuess OF newLow, high, count PLUS 1
+                END OF STORY
+            LIES!
+                RUMOR HAS IT
+                    YOU WON'T WANT TO MISS "Invalid input! Please enter 1, 2, or 3."
+                    SHOCKING DEVELOPMENT binaryGuess OF low, high, count
+                END OF STORY
+        END OF STORY
+    END OF STORY
+END OF STORY
+
+SOURCES SAY Start the game! THAT'S THE RUMOR
+EXPERTS CLAIM result TO BE binaryGuess OF 1, 100, 1
+
+PLEASE LIKE AND SUBSCRIBE`
+
 const PROG_DEFAULT = PROG_FIBONACCI
 
 const HEADLINES = [
@@ -90,6 +181,11 @@ class Editor extends Component {
             this.output = this.errors = ''
             this.render()
         }
+        this.setBinarySearch = () => {
+            this.prog = PROG_BINARY_SEARCH
+            this.output = this.errors = ''
+            this.render()
+        }
     }
     eval() {
         this.output = ''
@@ -119,6 +215,8 @@ class Editor extends Component {
                     onclick=${this.setFibonacci}>Fibonacci <span class="desktop">sample</span></button>
                 <button class="block"
                     onclick=${this.setFactorial}>Factorial <span class="desktop">sample</span></button>
+                <button class="block"
+                    onclick=${this.setBinarySearch}>Binary Search <span class="desktop">sample</span></button>
                 <button class="accent block"
                     onclick=${this.handleRun}>Run<span class="desktop"> this</span>!</button>
             </div>
